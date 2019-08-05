@@ -19,13 +19,15 @@ class App extends React.Component {
     .then(quotesList => this.setState({ quotesList }));
   }
 
+  /*GET method returns a new quote (includes quote & author name) from quotesList*/
   get newQuote(){
     if(!this.state.quotesList.length || this.state.quotePointer == null){
       return undefined; 
     }
     return this.state.quotesList[this.state.quotePointer]; 
   }
-
+  
+  /*method returns an integer/random number between 0 & quotesList.length-1*/
   getNewQuotePointer(){
     if(!this.state.quotesList.length){
       return undefined; 
@@ -33,6 +35,7 @@ class App extends React.Component {
     return Math.floor(Math.random()*this.state.quotesList.length);
   }
 
+  /*method changes the value of quotePointer & helps update the state of app to render a new quote */  
   changeQuote(){
     this.setState({
       quotePointer : this.getNewQuotePointer()
@@ -40,8 +43,6 @@ class App extends React.Component {
   }
 
   render() {
-    //console.log(this.state.quotesList);
-    //console.log(Math.floor(Math.random()*this.state.quotesList.length))
     return (
       <div className="App" id="quote-box">
         <div id="text">{this.newQuote ? this.newQuote.quote : '' }</div>
