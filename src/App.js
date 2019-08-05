@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       quotesList: [],
-      quotePointer: null, 
+      quotePointer: 50, //default pointer
     }
   }
 
@@ -18,14 +18,27 @@ class App extends React.Component {
     .then(quotesList => this.setState({ quotesList }));
   }
 
-  getNewQuote(){
-    console.log("working"); 
+  get newQuote(){
+    if(!this.state.quotesList.length || this.state.quotePointer == null){
+      return undefined; 
+    }
+    return this.state.quotesList[this.state.quotePointer]; 
+  }
+
+  getNewQuotePointer(){
+    if(!this.state.quotesList.length){
+      return undefined; 
+    }
+    return Math.floor(Math.random()*this.state.quotesList.length);
   }
 
   render() {
-    console.log(this.state.quotesList);
+    //console.log(this.state.quotesList);
+    //console.log(Math.floor(Math.random()*this.state.quotesList.length))
     return (
       <div className="App" id="quote-box">
+        <div id="text">{this.newQuote ? this.newQuote.quote : '' }</div>
+        <div id="author">{this.newQuote ? this.newQuote.author : '' }</div>
         <Button buttonText="New quote" fetchNewQuote={this.getNewQuote}/>
       </div>
     );
