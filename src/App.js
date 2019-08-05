@@ -10,6 +10,7 @@ class App extends React.Component {
       quotesList: [],
       quotePointer: 50, //default pointer
     }
+    this.changeQuote = this.changeQuote.bind(this)
   }
 
   componentDidMount() {
@@ -32,6 +33,12 @@ class App extends React.Component {
     return Math.floor(Math.random()*this.state.quotesList.length);
   }
 
+  changeQuote(){
+    this.setState({
+      quotePointer : this.getNewQuotePointer()
+    });
+  }
+
   render() {
     //console.log(this.state.quotesList);
     //console.log(Math.floor(Math.random()*this.state.quotesList.length))
@@ -39,7 +46,7 @@ class App extends React.Component {
       <div className="App" id="quote-box">
         <div id="text">{this.newQuote ? this.newQuote.quote : '' }</div>
         <div id="author">{this.newQuote ? this.newQuote.author : '' }</div>
-        <Button buttonText="New quote" fetchNewQuote={this.getNewQuote}/>
+        <Button buttonText="New quote" fetchNewQuote={this.changeQuote}/>
       </div>
     );
   }
