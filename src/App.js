@@ -2,6 +2,8 @@ import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button.js'; 
+import Twitter from './components/Twitter.js'; 
+
 
 class App extends React.Component {
   constructor(props){
@@ -45,9 +47,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App" id="quote-box">
-        <div id="text">{this.newQuote ? this.newQuote.quote : '' }</div>
-        <div id="author">{this.newQuote ? this.newQuote.author : '' }</div>
+        <div id="text">{this.newQuote ? this.newQuote.quote : ''}</div>
+        <div id="author">{this.newQuote ? this.newQuote.author : ''}</div>
         <Button buttonText="New quote" fetchNewQuote={this.changeQuote}/>
+        <Twitter displayedQuote={this.newQuote ? this.newQuote : ''}/>
       </div>
     );
   }
