@@ -3,6 +3,8 @@ import React from 'react';
 import './App.css';
 import Button from './components/Button.js'; 
 import Twitter from './components/Twitter.js'; 
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 
 class App extends React.Component {
@@ -43,15 +45,24 @@ class App extends React.Component {
       quotePointer : this.getNewQuotePointer()
     });
   }
-
+  
   render() {
     return (
-      <div className="App" id="quote-box">
-        <div id="text">{this.newQuote ? this.newQuote.quote : ''}</div>
-        <div id="author">{this.newQuote ? this.newQuote.author : ''}</div>
-        <Button buttonText="New quote" fetchNewQuote={this.changeQuote}/>
-        <Twitter displayedQuote={this.newQuote ? this.newQuote : ''}/>
-      </div>
+      <div className="container-fluid">
+       <div className="card text-center" id="quote-box">
+       <img className="card-img-top" src={process.env.PUBLIC_URL + 'app-header-pic.jpg'}></img>
+        <div className="card-body text-dark my-auto">
+          <h3 className="card-title">Random Quote Machine</h3>
+          <h6 class="card-subtitle mb-2 text-muted">developed by <a target="blank" href="http://github.com/snrelghgub" id="github-link">Taizy</a></h6>
+          <p className="blockquote mb-0 m" id="text">" {this.newQuote ? this.newQuote.quote : ''} "</p>
+          <p className="blockquote-footer" id="author">{this.newQuote ? this.newQuote.author : ''}</p>
+          <Button buttonText="New quote" fetchNewQuote={this.changeQuote}/>
+          <div className="card-footer" id="twitterShare-wrapper">
+          <Twitter displayedQuote={this.newQuote ? this.newQuote : ''}/>
+          </div>
+        </div>
+       </div>
+    </div>
     );
   }
 
