@@ -49,7 +49,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-       <div className="card text-center" id="quote-box">
+       <div className="card text-center">
        <img className="card-img-top" src={process.env.PUBLIC_URL + 'app-header-pic.jpg'}></img>
         <div className="card-body text-dark my-auto">
           <h3 className="card-title">Random Quote Machine</h3>
