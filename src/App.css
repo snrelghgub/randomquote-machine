@@ -1,8 +1,16 @@
+
+.card { /*https://stackoverflow.com/questions/39031224/how-to-center-cards-in-bootstrap-4*/ 
+        margin: 0 auto; /* Added */ 
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+
 .container-fluid{
  display: flex; 
- align-items: center; 
+ align-items: center;
  height: 100vh; 
 }
+
 
 #github-link{
  text-decoration: none; 
@@ -19,3 +27,5 @@
 #new-quote{
   margin-bottom: 15px; 
 }
+
+
